@@ -2,7 +2,7 @@ package assignment2;
 
 import java.util.Objects;
 
-class Student<T>{
+class Student<T extends Number & Comparable<? extends Number>>{
 	private String name;
 	private T roll;
 	private int age;
@@ -54,6 +54,12 @@ class Student<T>{
 	public String toString() {
 		return "Student [name=" + name + ", roll=" + roll + ", age=" + age + "]";
 	}
+
+	
+	public int compareTo(Student<T> o) {
+		return this.roll.compareTo(o.getRoll());
+	}
+
 	
 	
 }
@@ -61,10 +67,11 @@ class Student<T>{
 public class Question1 {
 		public static void main(String[] args) {
 			
-			Student<Integer> s1 = new Student<>("A", 12, 23);
-			Student<String> s2 = new Student<>("A", "13", 23);
+			Student<Integer> s1 = new Student<Integer>("A", 12, 23);
+			Student<Float> s2 = new Student<Float>("A", 12.5f, 23);
 			System.out.println(s1);
 			System.out.println(s2);
+			System.out.println((s1.compareTo(s2)>0? s1: s2) + "Comes first");
 			
 	}
 }

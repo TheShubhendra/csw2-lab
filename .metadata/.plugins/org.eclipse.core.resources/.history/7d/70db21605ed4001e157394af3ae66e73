@@ -1,0 +1,42 @@
+package assignment1;
+
+class Laptop{
+	private String model;
+	private float price;
+	
+	
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String mode) {
+		this.model = mode;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Laptop [mode=" + model + ", price=" + price + "]";
+	}
+
+	
+	
+	
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		Laptop l = new Laptop();
+		l.setModel("Apple");
+		l.setPrice(350000.3f);
+		System.out.println(l);
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package package2;
+
+import java.util.ArrayList;
+
+public class a {
+
+	public static void main(String[] args) {
+		ArrayList li = new ArrayList();
+		li.add("ravi");
+		li.add(2);
+	}
+
+}

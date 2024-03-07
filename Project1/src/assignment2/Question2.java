@@ -2,7 +2,7 @@ package assignment2;
 
 import java.util.Objects;
 
-class Book{
+class Book implements Comparable<Book>{
 	private int bookId;
 	private String bookName;
 	private float price;
@@ -39,6 +39,12 @@ class Book{
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookName=" + bookName + ", price=" + price + "]";
 	}
+
+
+	@Override
+	public int compareTo(Book o) {
+		return this.equals(o)?0:this.price>o.price?1:-1;
+	}
 	
 	
 }
@@ -46,7 +52,9 @@ class Book{
 public class Question2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Book b1 = new Book(1, "Harry Potter and the Order of the Phoenix", 1322.50f);
+		Book b2 = new Book(12, "CEH v11 Certified Ethical Hacker Study Guide", 100000f);
+		System.out.println((b1.compareTo(b2) > 0 ?b1:b2 ) + " is more costly");
 
 	}
 

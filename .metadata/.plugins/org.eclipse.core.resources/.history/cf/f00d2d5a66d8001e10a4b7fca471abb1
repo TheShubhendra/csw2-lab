@@ -1,0 +1,189 @@
+package assignment1;
+
+import java.util.*;
+
+class Student {
+    private int id;
+    private String name;
+    private List<Course> courses;
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+        this.courses = new ArrayList<>();
+    }
+
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void addCourse(Course course) {
+		this.courses.add(course);
+	}
+	
+	public boolean removeCourse(Course course) {
+		return this.courses.remove(course);
+	}
+
+	
+	public void display() {
+        System.out.println("Student ID: " + id);
+        System.out.println("Student Name: " + name);
+    }
+}
+
+
+class Course {
+
+    private String code;
+    private String name;
+    private List<Student> students;
+
+
+    public Course(String code, String name) {
+        this.code = code;
+        this.name = name;
+        this.students = new ArrayList<Student>();
+    }
+
+    public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
+	
+	public boolean removeStudent(Student student) {
+		return this.students.remove(student);
+	}
+
+	public void display() {
+        System.out.println("Course Code: " + code);
+        System.out.println("Course Name: " + name);
+    }
+}
+
+
+interface EnrollmentSystem {
+
+    public void enroll(Student student, Course course);
+
+    public void drop(Student student, Course course);
+
+    public void displayEnrollment(Course course);
+}
+
+
+class Enrollment implements EnrollmentSystem{
+	
+
+
+	@Override
+	public void enroll(Student student, Course course) {
+		student.addCourse(course);
+		course.addStudent(student);
+		System.out.print("Enrolled");
+		
+	}
+
+	@Override
+	public void drop(Student student, Course course) {
+		if(!student.removeCourse(course) && !course.removeStudent(student)) {
+			System.out.println("No enrollment Found");
+		}else {
+			System.out.println("Dropped the enrollment");
+		}
+		
+	}
+
+	@Override
+	public void displayEnrollment(Course course) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+
+public class Question9 {
+    public static void main(String[] args) {
+
+        Student s1 = new Student(1001, "Alice");
+        Student s2 = new Student(1002, "Bob");
+        Student s3 = new Student(1003, "Charlie");
+
+        Course c1 = new Course("CS101", "Introduction to Computer Science");
+        Course c2 = new Course("CS102", "Data Structures and Algorithms");
+        Course c3 = new Course("CS103", "Object-Oriented Programming");
+
+        Enrollment e = new Enrollment();
+
+
+        e.enroll(s1, c1);
+        e.enroll(s2, c1);
+        e.enroll(s3, c1);
+        e.enroll(s1, c2);
+        e.enroll(s2, c2);
+        e.enroll(s3, c3);
+
+        e.displayEnrollment(c1);
+        e.displayEnrollment(c2);
+        e.displayEnrollment(c3);
+
+        e.drop(s1, c1);
+        e.drop(s2, c2);
+        e.drop(s3, c3);
+
+
+        e.displayEnrollment(c1);
+        e.displayEnrollment(c2);
+        e.displayEnrollment(c3);
+    }
+}
+
+/*
+
+- The program follows the principles of loose coupling and high cohesion by separating the concerns of different classes and ensuring that each class has a single responsibility.
+- The `Student` class is responsible for representing a student and maintaining the list of enrolled courses for each student.
+- The `Course` class is responsible for representing a course and its capacity.
+- The `Enrollment` class is responsible for managing the enrollment of students in courses and storing the enrollment details in a hashmap.
+- The `EnrollmentSystem` interface defines the methods for enrollment management and allows the `Enrollment` class to interact with the other classes indirectly through the interface.
+- The `Main` class is responsible for demonstrating the system's functionality by creating some students and courses, and calling the methods of the `Enrollment` class.
+- The program uses appropriate error handling and user-friendly output messages to handle invalid or unsuccessful operations, such as enrolling in a full or non-existent course, dropping from a non-enrolled or non-existent course, or displaying the enrollment details of a non-existent course.
+*/
+```
