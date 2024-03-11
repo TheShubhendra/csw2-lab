@@ -2,14 +2,14 @@ package assignment2;
 
 import java.util.Objects;
 
-class Student<T extends Number & Comparable<? extends Number>>{
+class Student1<T extends Comparable<T>> implements Comparable<Student<T>> {
 	private String name;
 	private T roll;
 	private int age;
 	
 	
 	
-	public Student(String name, T roll, int age) {
+	public Student1(String name, T roll, int age) {
 		this.name = name;
 		this.roll = roll;
 		this.age = age;
@@ -56,7 +56,11 @@ class Student<T extends Number & Comparable<? extends Number>>{
 	}
 
 	
+	@Override
 	public int compareTo(Student<T> o) {
+		if(this.equals(o)) {
+			return 0;
+		}
 		return this.roll.compareTo(o.getRoll());
 	}
 
@@ -68,10 +72,10 @@ public class Question1 {
 		public static void main(String[] args) {
 			
 			Student<Integer> s1 = new Student<Integer>("A", 12, 23);
-			Student<Float> s2 = new Student<Float>("A", 12.5f, 23);
+			Student<Integer> s2 = new Student<Integer>("A", 12, 23);
 			System.out.println(s1);
 			System.out.println(s2);
-			System.out.println((s1.compareTo(s2)>0? s1: s2) + "Comes first");
+			System.out.println((s1.compareTo(s2)>0? s1: s2) + " Comes first");
 			
 	}
 }

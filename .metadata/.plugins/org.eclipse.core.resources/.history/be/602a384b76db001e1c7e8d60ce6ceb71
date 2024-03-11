@@ -1,9 +1,0 @@
-package assignment2;
-
-class Student<T>{
-	
-}
-
-public class Question4 {
-
-}

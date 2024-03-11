@@ -1,6 +1,6 @@
 package assignment2;
 
-import java.util.Objects;
+import java.util.Arrays;
 
 class Student implements Comparable<Student>{
 	private String name;
@@ -12,27 +12,14 @@ class Student implements Comparable<Student>{
 		this.totalMark = totalMark;
 	}
 	
+
+
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", rn=" + rn + ", totalMark=" + totalMark + "]";
+		return "Student [name=" + name + ", rn=" + rn + ", totalMark=" + totalMark + "]\n";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, rn, totalMark);
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Student other = (Student) obj;
-		return  rn == other.rn;
-	}
 
 	public String getName() {
 		return name;
@@ -67,29 +54,38 @@ class Student implements Comparable<Student>{
 	
 	
 	
+	
 }
 
-public class Question4 {
-
+public class Question5 {
+	public static void bubbleSort(Student[] arr) {
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr.length-i-1; j++) {
+				if(arr[j].compareTo(arr[j+1])>0) {
+					Student temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		Student[] students = new Student[5];
+		
 		students[0] = new Student("Shubhendra", 37, 100.f);
 		students[1] = new Student("Abhigyan", 40, 100.f);
 		students[2] = new Student("Vishal", 36, 101.11f);
 		students[3] = new Student("Soumyadeep", 23, 102.2f);
 		students[4] = new Student("Someone", 66, 0.8f);
 		
-		Student key = students[0];
-		
-		for(Student student: students) {
-			if(student.equals(key)) {
-				System.out.println("Found " + student);
-				break;
-			}
-		}
+		System.out.println("Before Sort");
+		System.out.println(Arrays.toString(students));
+		bubbleSort(students);
+		System.out.println("After Sort");
+		System.out.println(Arrays.toString(students));
 		
 		
 	}
 	
 }
-
