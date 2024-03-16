@@ -1,6 +1,8 @@
 package Assignment3;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -43,20 +45,13 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-               "name='" + name + '\'' +
-               ", age=" + age +
-               ", mark=" + mark +
-               '}';
+        return "name=" + name + " age=" + age + " mark=" + mark ;
     }
 }
 
 public class Question4 {
-    private static LinkedList<Student> students;
+    private static List<Student> students;
 
-
-
-  
     public static void checkExistence(Student student) {
         if (students.contains(student)) {
             System.out.println("The student exists in the list.");
@@ -77,8 +72,8 @@ public class Question4 {
 
 
     public static void main(String[] args) {
-		students = new LinkedList<Student>();
-		
+	 	students = new ArrayList<Student>();
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -86,7 +81,6 @@ public class Question4 {
         students.add(new Student("Not Shubh",98, 0));
         students.add(new Student("No one", 500, 101));
         System.out.println(students);
-
   
         System.out.println("Number of students in the list: " + students.size());
 
@@ -105,7 +99,7 @@ public class Question4 {
         mark = scanner.nextInt();
         student = new Student(name, age, mark);
         removeStudent(student);
-
+       
         scanner.close();
     }
 }

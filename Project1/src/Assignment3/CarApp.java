@@ -2,6 +2,7 @@ package Assignment3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 class Car implements Comparable<Car>{
 	private int modelNo;
@@ -47,6 +48,7 @@ public class CarApp {
 	
 	
 	public static void main(String[] args) {
+		PriorityQueue q = new PriorityQueue<Integer>();
 		List<Car> list = new ArrayList<Car>();
 		
 		list.add(new Car(1996, "Ford Model T", 16));
@@ -54,7 +56,6 @@ public class CarApp {
 		list.add(new Car(2004, "Volkswagen Gol", 32));
 		list.add(new Car(2006, "Hindustan Ambassador", 23));
 		System.out.println(list);
-		list.sort(null);
 		System.out.println(list);
 		
 	
