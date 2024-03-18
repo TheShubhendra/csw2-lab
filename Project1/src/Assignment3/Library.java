@@ -45,7 +45,7 @@ public class Library {
 		Map<Integer, Book> map = new HashMap<Integer, Book>();
 		map.put(1, b1);
 		map.put(2, b2);
-		System.out.println(map.containsKey(b1));
+		System.out.println(map.containsValue(b1));
 		map.remove(2);
 
 	}

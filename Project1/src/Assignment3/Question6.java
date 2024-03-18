@@ -15,6 +15,8 @@ public class Question6 {
 		System.out.println("Enter a number to search: ");
 		int x = sc.nextInt();
 		System.out.println(x + " is " + (set.contains(x)? "": "not ") + "present");
+		set.remove(9);
+		sc.close();
 	}
 
 }
